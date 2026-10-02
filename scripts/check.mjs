@@ -21,6 +21,10 @@ for (const [lang, file] of pages) {
   if (!html.includes('rel="canonical"')) failures.push(`${lang}: canonical is missing`);
   if ((html.match(/hreflang=/g) || []).length < 7) failures.push(`${lang}: hreflang links are incomplete`);
   if (!html.includes('data-lead-form')) failures.push(`${lang}: lead form is missing`);
+  if (!html.includes('property="og:type" content="website"')) failures.push(`${lang}: og:type is missing`);
+  if (!html.includes('property="og:site_name" content="eventpartner.ge"')) failures.push(`${lang}: og:site_name is missing`);
+  if (!html.includes('og-eventpartner-ge-wine-social-v1.jpg')) failures.push(`${lang}: social preview image is missing`);
+  if (!html.includes('name="twitter:card" content="summary_large_image"')) failures.push(`${lang}: Twitter card is missing`);
   for (const match of html.matchAll(/(?:src|href)="(\/(?:assets\/[^"?#]+|favicon\.svg))/g)) {
     try { await access(path.join(dist, match[1])); } catch { failures.push(`${lang}: missing ${match[1]}`); }
   }
@@ -32,6 +36,8 @@ for (const [lang, file] of pages) {
     if (html.includes(forbidden)) failures.push(`${lang}: forbidden legacy value ${forbidden}`);
   }
 }
+
+try { await access(path.join(dist, "assets/images/og-eventpartner-ge-wine-social-v1.jpg")); } catch { failures.push("Social preview JPEG is missing"); }
 
 const imageDir = path.join(dist, "assets/images");
 const images = (await readdir(imageDir)).filter((file) => file.endsWith(".webp"));

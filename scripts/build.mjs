@@ -58,6 +58,21 @@ const render = (c) => {
   ${languages.map((item) => `<link rel="alternate" hreflang="${item.lang}" href="${domain}${item.path}">`).join("\n  ")}
   <link rel="alternate" hreflang="x-default" href="${domain}/">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="eventpartner.ge">
+  <meta property="og:title" content="${esc(c.meta.title)}">
+  <meta property="og:description" content="${esc(c.meta.description)}">
+  <meta property="og:url" content="${canonical}">
+  <meta property="og:image" content="${domain}/assets/images/og-eventpartner-ge-wine-social-v1.jpg">
+  <meta property="og:image:secure_url" content="${domain}/assets/images/og-eventpartner-ge-wine-social-v1.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="600">
+  <meta property="og:image:height" content="315">
+  <meta property="og:image:alt" content="Branded Georgian wine prepared for a corporate event in Tbilisi by SWAGGY">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="${esc(c.meta.title)}">
+  <meta name="twitter:description" content="${esc(c.meta.description)}">
+  <meta name="twitter:image" content="${domain}/assets/images/og-eventpartner-ge-wine-social-v1.jpg">
   <link rel="stylesheet" href="/assets/styles.css?v=${version}">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-K9YVTX0VDH"></script>

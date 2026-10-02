@@ -12,7 +12,7 @@ export default {
     services: "Services",
     process: "How it works",
     contact: "Contact",
-    cta: "Plan an event",
+    cta: "Request Event",
     menu: "Menu",
     close: "Close"
   },
@@ -20,7 +20,7 @@ export default {
     eyebrow: "Based in Tbilisi · Working across Georgia",
     title: "Your local event partner in Georgia",
     body: "Venues, production, local suppliers, food, wine, experiences and branded merchandise — coordinated by one team on the ground in Georgia.",
-    primary: "Plan your event",
+    primary: "Request Event",
     secondary: "Tell us what you’re planning",
     proof: ["One local point of contact", "Events + experiences + merchandise", "On-site coordination"],
     caption: "Event setup · Tbilisi",
@@ -140,7 +140,7 @@ export default {
       guests: "Approximate number",
       message: "Tell us about the event, team and what you would like guests to experience"
     },
-    submit: "Tell us about your event",
+    submit: "Request Event",
     note: "This first version uses a demo form. Production lead delivery will be connected at launch.",
     success: "Thank you — your brief is ready. In this demo version it has not been sent yet."
   },

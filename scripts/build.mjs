@@ -53,7 +53,7 @@ const render = (c) => {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>${esc(c.meta.title)}</title>
   <meta name="description" content="${esc(c.meta.description)}">
-  <meta name="theme-color" content="#2b1717">
+  <meta name="theme-color" content="#17243c">
   <link rel="canonical" href="${canonical}">
   ${languages.map((item) => `<link rel="alternate" hreflang="${item.lang}" href="${domain}${item.path}">`).join("\n  ")}
   <link rel="alternate" hreflang="x-default" href="${domain}/">
@@ -101,7 +101,6 @@ const render = (c) => {
         <p class="hero__body">${esc(c.hero.body)}</p>
         <div class="hero__actions">
           <a class="button button--light" href="#contact">${esc(c.hero.primary)}</a>
-          <a class="text-link" href="#contact">${esc(c.hero.secondary)}</a>
         </div>
         <ul class="hero__proof">${c.hero.proof.map((item) => `<li>${esc(item)}</li>`).join("")}</ul>
       </div>
@@ -115,7 +114,7 @@ const render = (c) => {
           <p>${esc(c.proof.body)}</p>
         </div>
         <ol class="flow-strip">${c.proof.flow.map((item, index) => `<li><span>${String(index + 1).padStart(2, "0")}</span>${esc(item)}</li>`).join("")}</ol>
-        <div class="proof-grid">
+        <div class="proof-grid proof-grid--compact">
           <figure class="proof-grid__large">
             ${picture({ name: "venue-exterior", alt: c.proof.images.venueAlt })}
             <figcaption>${esc(c.proof.images.venueCaption)}</figcaption>
@@ -126,108 +125,80 @@ const render = (c) => {
           </figure>
           <p class="proof-grid__note">Great experience<br><span>backed by</span><br>great organisation.</p>
         </div>
-      </div>
-    </section>
-
-    <section class="section formats-section" id="services">
-      <div class="shell">
-        <div class="section-heading section-heading--split">
-          <div>${eyebrow(c.formats.eyebrow)}<h2>${esc(c.formats.title)}</h2></div>
-          <p>${esc(c.formats.intro)}</p>
-        </div>
-        <div class="format-grid">${c.formats.items.map(([title, body], index) => `
+        <div class="format-grid format-grid--compact">${c.formats.items.slice(0, 4).map(([title, body], index) => `
           <article class="format-card"><span>${String(index + 1).padStart(2, "0")}</span><h3>${esc(title)}</h3><p>${esc(body)}</p></article>`).join("")}
         </div>
       </div>
     </section>
 
-    <section class="section venues-section" id="georgia">
-      <div class="shell venues-layout">
-        <div class="venues-copy">
-          ${eyebrow(c.venues.eyebrow)}
-          <h2>${esc(c.venues.title)}</h2>
-          <p>${esc(c.venues.body)}</p>
-          <ul class="tag-list">${c.venues.tags.map((tag) => `<li>${esc(tag)}</li>`).join("")}</ul>
-          <p class="location-note">${esc(c.venues.note)}</p>
-        </div>
-        <figure>
-          ${picture({ name: "venue-branded-seating", alt: c.venues.alt, className: "media--portrait" })}
-          <figcaption>${esc(c.venues.caption)}</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section class="experience-banner">
-      <div class="shell experience-banner__inner">
-        <div>${eyebrow(c.experience.eyebrow)}<h2>${esc(c.experience.title)}</h2></div>
-        <div><p>${esc(c.experience.body)}</p><blockquote>${esc(c.experience.callout)}</blockquote></div>
-      </div>
-    </section>
-
-    <section class="section wine-section">
-      <div class="shell wine-layout">
-        <figure>
-          ${picture({ name: "custom-wine-gifts", alt: c.wine.alt, className: "media--portrait" })}
-          <figcaption>${esc(c.wine.caption)}</figcaption>
-        </figure>
-        <div class="wine-copy">
-          ${eyebrow(c.wine.eyebrow)}
-          <h2>${esc(c.wine.title)}</h2>
-          <p>${esc(c.wine.body)}</p>
-          <ul class="numbered-list">${c.wine.items.map((item, index) => `<li><span>${String(index + 1).padStart(2, "0")}</span>${esc(item)}</li>`).join("")}</ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="section team-section">
-      <div class="shell team-layout">
-        <div class="team-copy">
-          ${eyebrow(c.team.eyebrow)}
-          <h2>${esc(c.team.title)}</h2>
-          <p>${esc(c.team.body)}</p>
-          <ul class="role-list">${c.team.roles.map((role) => `<li>${esc(role)}</li>`).join("")}</ul>
-        </div>
-        <figure>
-          ${picture({ name: "production-podcast", alt: c.team.alt, className: "media--portrait" })}
-          <figcaption>${esc(c.team.caption)}</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section class="section merch-section">
+    <section class="section georgia-section" id="georgia">
       <div class="shell">
         <div class="section-heading section-heading--split">
-          <div>${eyebrow(c.merch.eyebrow)}<h2>${esc(c.merch.title)}</h2></div>
-          <div><p>${esc(c.merch.body)}</p><ul class="inline-list">${c.merch.items.map((item) => `<li>${esc(item)}</li>`).join("")}</ul></div>
+          <div>${eyebrow(c.experience.eyebrow)}<h2>${esc(c.experience.title)}</h2></div>
+          <p>${esc(c.experience.body)}</p>
         </div>
-        <div class="merch-grid">
-          <figure class="merch-grid__one">${picture({ name: "welcome-kit", alt: c.merch.images.kitAlt, className: "media--portrait" })}</figure>
-          <figure class="merch-grid__two">${picture({ name: "branded-lounge", alt: c.merch.images.loungeAlt })}</figure>
-          <figure class="merch-grid__three">${picture({ name: "branded-treats", alt: c.merch.images.treatAlt, className: "media--portrait" })}</figure>
-          <p class="merch-grid__caption">${esc(c.merch.images.caption)}</p>
+        <div class="georgia-grid">
+          <article class="georgia-card">
+            <div class="georgia-card__copy">
+              ${eyebrow(c.venues.eyebrow)}
+              <h3>${esc(c.venues.title)}</h3>
+              <p>${esc(c.venues.body)}</p>
+              <ul class="tag-list">${c.venues.tags.slice(0, 6).map((tag) => `<li>${esc(tag)}</li>`).join("")}</ul>
+            </div>
+            <figure>${picture({ name: "venue-branded-seating", alt: c.venues.alt })}</figure>
+          </article>
+          <article class="georgia-card georgia-card--wine">
+            <figure>${picture({ name: "custom-wine-gifts", alt: c.wine.alt })}</figure>
+            <div class="georgia-card__copy">
+              ${eyebrow(c.wine.eyebrow)}
+              <h3>${esc(c.wine.title)}</h3>
+              <p>${esc(c.wine.body)}</p>
+              <ul class="inline-list">${c.wine.items.slice(0, 4).map((item) => `<li>${esc(item)}</li>`).join("")}</ul>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="section scope-section">
-      <div class="shell scope-layout">
-        <div>${eyebrow(c.scope.eyebrow)}<h2>${esc(c.scope.title)}</h2></div>
-        <ul class="scope-list">${c.scope.items.map((item) => `<li><span aria-hidden="true">+</span>${esc(item)}</li>`).join("")}</ul>
-      </div>
-    </section>
-
-    <section class="section local-section">
+    <section class="section production-section" id="services">
       <div class="shell">
-        <div class="section-heading">${eyebrow(c.local.eyebrow)}<h2>${esc(c.local.title)}</h2></div>
-        <div class="local-grid">${c.local.items.map(([title, body], index) => `
-          <article><span>${String(index + 1).padStart(2, "0")}</span><h3>${esc(title)}</h3><p>${esc(body)}</p></article>`).join("")}</div>
+        <div class="section-heading section-heading--split">
+          <div>${eyebrow(c.team.eyebrow)}<h2>${esc(c.team.title)}</h2></div>
+          <p>${esc(c.team.body)}</p>
+        </div>
+        <div class="production-grid">
+          <article class="production-card">
+            <figure>${picture({ name: "production-podcast", alt: c.team.alt })}</figure>
+            <div class="production-card__copy">
+              <h3>${esc(c.team.caption)}</h3>
+              <ul class="role-list">${c.team.roles.slice(0, 6).map((role) => `<li>${esc(role)}</li>`).join("")}</ul>
+            </div>
+          </article>
+          <article class="production-card production-card--merch">
+            <figure>${picture({ name: "branded-lounge", alt: c.merch.images.loungeAlt })}</figure>
+            <div class="production-card__copy">
+              <h3>${esc(c.merch.title)}</h3>
+              <p>${esc(c.merch.body)}</p>
+              <ul class="inline-list">${c.merch.items.slice(0, 5).map((item) => `<li>${esc(item)}</li>`).join("")}</ul>
+            </div>
+          </article>
+        </div>
+        <div class="scope-rail">
+          <strong>${esc(c.scope.title)}</strong>
+          <ul>${c.scope.items.slice(0, 8).map((item) => `<li>${esc(item)}</li>`).join("")}</ul>
+        </div>
       </div>
     </section>
 
     <section class="section process-section" id="process">
       <div class="shell">
-        <div class="section-heading section-heading--split"><div>${eyebrow(c.process.eyebrow)}<h2>${esc(c.process.title)}</h2></div></div>
-        <ol class="process-list">${c.process.items.map(([number, title, body]) => `
+        <div class="section-heading section-heading--split">
+          <div>${eyebrow(c.process.eyebrow)}<h2>${esc(c.process.title)}</h2></div>
+          <p>${esc(c.local.title)}</p>
+        </div>
+        <div class="local-grid local-grid--compact">${c.local.items.map(([title, body], index) => `
+          <article><span>${String(index + 1).padStart(2, "0")}</span><h3>${esc(title)}</h3><p>${esc(body)}</p></article>`).join("")}</div>
+        <ol class="process-list process-list--compact">${c.process.items.map(([number, title, body]) => `
           <li><span>${esc(number)}</span><h3>${esc(title)}</h3><p>${esc(body)}</p></li>`).join("")}</ol>
       </div>
     </section>
@@ -240,22 +211,15 @@ const render = (c) => {
             <label><span>${esc(c.contact.fields.name)}</span><input name="name" type="text" placeholder="${esc(c.contact.placeholders.name)}" autocomplete="name" required></label>
             <label><span>${esc(c.contact.fields.email)}</span><input name="email" type="email" placeholder="${esc(c.contact.placeholders.email)}" autocomplete="email" required></label>
           </div>
-          <div class="field-row">
+          <div class="field-row field-row--three">
             <label><span>${esc(c.contact.fields.company)}</span><input name="company" type="text" placeholder="${esc(c.contact.placeholders.company)}" autocomplete="organization"></label>
             <label><span>${esc(c.contact.fields.date)}</span><input name="date" type="text" placeholder="${esc(c.contact.placeholders.date)}"></label>
+            <label><span>${esc(c.contact.fields.guests)}</span><input name="guests" type="text" inputmode="numeric" placeholder="${esc(c.contact.placeholders.guests)}"></label>
           </div>
-          <label><span>${esc(c.contact.fields.guests)}</span><input name="guests" type="text" inputmode="numeric" placeholder="${esc(c.contact.placeholders.guests)}"></label>
-          <label><span>${esc(c.contact.fields.message)}</span><textarea name="message" rows="5" placeholder="${esc(c.contact.placeholders.message)}" required></textarea></label>
+          <label><span>${esc(c.contact.fields.message)}</span><textarea name="message" rows="4" placeholder="${esc(c.contact.placeholders.message)}" required></textarea></label>
           <div class="form-footer"><button class="button button--light" type="submit">${esc(c.contact.submit)}</button><small>${esc(c.contact.note)}</small></div>
           <p class="form-success" data-form-success tabindex="-1" hidden></p>
         </form>
-      </div>
-    </section>
-
-    <section class="section faq-section">
-      <div class="shell faq-layout">
-        <div>${eyebrow(c.faq.eyebrow)}<h2>${esc(c.faq.title)}</h2></div>
-        <div class="faq-list">${c.faq.items.map(([question, answer]) => `<details><summary>${esc(question)}<span aria-hidden="true"></span></summary><p>${esc(answer)}</p></details>`).join("")}</div>
       </div>
     </section>
   </main>

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://raw.githubusercontent.com/cloudflare/workers-sdk/main/packages/wrangler/config-schema.json",
+  "name": "eventpartner-ge",
+  "main": "src/_worker.js",
+  "compatibility_date": "2026-10-02",
+  "routes": [
+    {
+      "pattern": "eventpartner.ge",
+      "custom_domain": true
+    },
+    {
+      "pattern": "www.eventpartner.ge",
+      "custom_domain": true
+    }
+  ],
+  "send_email": [
+    {
+      "name": "LEAD_EMAIL",
+      "destination_address": "order@swaggy.agency"
+    }
+  ],
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page",
+    "run_worker_first": ["/*"]
+  },
+  "observability": {
+    "enabled": true
+  }
+}

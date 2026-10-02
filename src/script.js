@@ -23,12 +23,57 @@ if (menuButton && menu) {
 }
 
 document.querySelectorAll("[data-lead-form]").forEach((form) => {
-  form.addEventListener("submit", (event) => {
+  const startedAt = form.querySelector("[data-started-at]");
+  const status = form.querySelector("[data-form-status]");
+  const submitButton = form.querySelector("[data-submit-button]");
+  const originalLabel = submitButton?.textContent || "";
+
+  const resetStartedAt = () => {
+    if (startedAt) startedAt.value = String(Date.now());
+  };
+  resetStartedAt();
+
+  form.addEventListener("submit", async (event) => {
     event.preventDefault();
     if (!form.reportValidity()) return;
-    const success = form.querySelector("[data-form-success]");
-    success.textContent = form.dataset.success;
-    success.hidden = false;
-    success.focus();
+
+    if (status) {
+      status.hidden = true;
+      status.classList.remove("is-error");
+    }
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.textContent = form.dataset.sending || originalLabel;
+    }
+
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { "Accept": "application/json" }
+      });
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok || !payload.ok) throw new Error(payload.code || "request_failed");
+
+      form.reset();
+      resetStartedAt();
+      if (status) {
+        status.textContent = form.dataset.success;
+        status.hidden = false;
+        status.focus();
+      }
+    } catch {
+      if (status) {
+        status.textContent = form.dataset.error;
+        status.classList.add("is-error");
+        status.hidden = false;
+        status.focus();
+      }
+    } finally {
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.textContent = originalLabel;
+      }
+    }
   });
 });

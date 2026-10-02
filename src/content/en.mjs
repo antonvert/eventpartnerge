@@ -151,8 +151,12 @@ export default {
       message: "Tell us about the event, team and what you would like guests to experience"
     },
     submit: "Request Event",
-    note: "This first version uses a demo form. Production lead delivery will be connected at launch.",
-    success: "Thank you — your brief is ready. In this demo version it has not been sent yet."
+    note: "We usually reply by email. You can also write to order@swaggy.agency.",
+    consent: "I agree to the processing of my details for this enquiry.",
+    privacy: "Privacy policy",
+    sending: "Sending…",
+    error: "We couldn’t send your request. Please email order@swaggy.agency.",
+    success: "Thank you — your event request has been sent. We’ll get back to you shortly."
   },
   faq: {
     eyebrow: "FAQ",

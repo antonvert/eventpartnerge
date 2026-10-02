@@ -212,7 +212,7 @@ const render = (c) => {
     <section class="contact-section" id="contact">
       <div class="shell contact-layout">
         <div class="contact-copy">${eyebrow(c.contact.eyebrow)}<h2>${esc(c.contact.title)}</h2><p>${esc(c.contact.body)}</p></div>
-        <form class="lead-form" data-lead-form data-success="${esc(c.contact.success)}" action="#contact" method="post">
+        <form class="lead-form" data-lead-form data-success="${esc(c.contact.success)}" data-error="${esc(c.contact.error)}" data-sending="${esc(c.contact.sending)}" action="/api/lead" method="post">
           <div class="field-row">
             <label><span>${esc(c.contact.fields.name)}</span><input name="name" type="text" placeholder="${esc(c.contact.placeholders.name)}" autocomplete="name" required></label>
             <label><span>${esc(c.contact.fields.email)}</span><input name="email" type="email" placeholder="${esc(c.contact.placeholders.email)}" autocomplete="email" required></label>
@@ -223,8 +223,12 @@ const render = (c) => {
             <label><span>${esc(c.contact.fields.guests)}</span><input name="guests" type="text" inputmode="numeric" placeholder="${esc(c.contact.placeholders.guests)}"></label>
           </div>
           <label><span>${esc(c.contact.fields.message)}</span><textarea name="message" rows="4" placeholder="${esc(c.contact.placeholders.message)}" required></textarea></label>
-          <div class="form-footer"><button class="button button--light" type="submit">${esc(c.contact.submit)}</button><small>${esc(c.contact.note)}</small></div>
-          <p class="form-success" data-form-success tabindex="-1" hidden></p>
+          <label class="honeypot" aria-hidden="true">Website<input name="website" type="text" tabindex="-1" autocomplete="off"></label>
+          <input type="hidden" name="startedAt" value="" data-started-at>
+          <input type="hidden" name="page" value="${esc(c.lang)}">
+          <label class="consent"><input type="checkbox" name="consent" required><span>${esc(c.contact.consent)} <a href="https://swaggy.agency/en/privacy-policy" target="_blank" rel="noopener">${esc(c.contact.privacy)}</a></span></label>
+          <div class="form-footer"><button class="button button--light" type="submit" data-submit-button>${esc(c.contact.submit)}</button><small>${esc(c.contact.note)}</small></div>
+          <p class="form-success" data-form-status tabindex="-1" hidden></p>
         </form>
       </div>
     </section>
@@ -232,7 +236,7 @@ const render = (c) => {
 
   <footer class="site-footer">
     <div class="shell footer-top">
-      <a class="brand brand--footer" href="${c.path}"><span class="brand__wordmark"><span>eventpartner</span><b>.ge</b></span></a>
+      <a class="brand brand--footer brand--endorsed" href="${c.path}"><span class="brand__wordmark"><span>eventpartner</span><b>.ge</b></span><small class="brand__endorsement">Powered by SWAGGY</small></a>
       <p>${esc(c.footer.line)}</p>
       <a href="#contact">${esc(c.nav.cta)}</a>
     </div>

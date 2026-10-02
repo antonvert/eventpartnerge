@@ -714,3 +714,37 @@ body { background: var(--paper); }
   .audience-grid { grid-template-columns: 1fr; }
   .audience-card { min-height: 160px; }
 }
+
+
+/* Production lead form */
+.honeypot {
+  position: absolute !important;
+  left: -9999px !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+}
+.consent {
+  grid-template-columns: auto 1fr !important;
+  align-items: start;
+  gap: 10px !important;
+  color: rgba(255,255,255,.68);
+  font-size: .76rem;
+  line-height: 1.45;
+}
+.consent input {
+  width: 16px;
+  height: 16px;
+  margin-top: 2px;
+  accent-color: #76a8ff;
+}
+.consent a { color: #fff; }
+.form-success.is-error {
+  border-color: rgba(255,170,150,.55);
+  color: #ffd4c8;
+}
+[data-submit-button]:disabled {
+  cursor: wait;
+  opacity: .7;
+  transform: none;
+}

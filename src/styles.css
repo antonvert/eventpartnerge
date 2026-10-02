@@ -748,3 +748,112 @@ body { background: var(--paper); }
   opacity: .7;
   transform: none;
 }
+
+/* Unified SWAGGY network footer */
+.site-footer {
+  display: grid;
+  width: min(calc(100% - 24px), 1480px);
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px 28px;
+  margin: 0 auto 10px;
+  padding: 18px 28px 12px;
+  align-items: center;
+  border: 1px solid var(--line, rgba(20, 20, 20, 0.14));
+  border-radius: 10px;
+  background: var(--paper, #fbf7f0);
+  color: var(--ink, #111);
+}
+
+.footer-primary {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 20px;
+}
+
+.footer-identity {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 14px;
+}
+
+.footer-project {
+  max-width: 82px;
+  color: inherit;
+  font-size: 0.58rem;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+  line-height: 1.05;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.footer-primary > p {
+  max-width: 520px;
+  margin: 0;
+  color: var(--muted, rgba(20, 20, 20, 0.58));
+  font-size: 0.82rem;
+  font-weight: 400;
+  line-height: 1.35;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-self: center;
+  justify-content: flex-end;
+  gap: 8px 18px;
+  text-align: right;
+}
+
+.footer-links a {
+  color: inherit;
+  font-size: 0.76rem;
+  font-weight: 520;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.footer-note {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding-top: 10px;
+  border-top: 1px solid var(--line, rgba(20, 20, 20, 0.14));
+  color: var(--muted, rgba(20, 20, 20, 0.48));
+  font-size: 0.66rem;
+}
+
+@media (max-width: 900px) {
+  .site-footer {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 18px 18px 14px;
+  }
+
+  .footer-primary {
+    display: grid;
+    gap: 8px;
+  }
+
+  .footer-links {
+    justify-content: flex-start;
+    text-align: left;
+  }
+}
+
+@media (max-width: 620px) {
+  .site-footer {
+    width: calc(100% - 16px);
+    border-radius: 8px;
+  }
+
+  .footer-identity {
+    gap: 10px;
+  }
+
+  .footer-project {
+    max-width: 72px;
+    font-size: 0.52rem;
+  }
+}

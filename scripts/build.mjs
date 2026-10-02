@@ -87,7 +87,7 @@ const render = (c) => {
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header" data-header>
-    <div class="brand-badge"><a class="brand" href="${c.path}" aria-label="eventpartner.ge home"><span class="brand__wordmark"><span>eventpartner</span><b>.ge</b></span></a><a class="brand-badge__endorsement" href="https://swaggy.agency" target="_blank" rel="noopener" aria-label="Powered by SWAGGY"><span>Powered by</span><strong>SWAGGY</strong></a></div>
+    <div class="brand-badge"><a class="brand" href="${c.path}" aria-label="eventpartner.ge home"><span class="brand__wordmark"><span>eventpartner</span><b>.ge</b></span></a><a class="brand-badge__endorsement" href="https://swaggy.agency" target="_blank" rel="noopener" aria-label="By SWAGGY"><span>BY</span><strong>SWAGGY</strong></a></div>
     <nav class="desktop-nav" aria-label="Primary">
       <a href="#what-we-do">${esc(c.nav.work)}</a>
       <a href="#georgia">${esc(c.nav.georgia)}</a>
@@ -258,12 +258,20 @@ const render = (c) => {
   </main>
 
   <footer class="site-footer">
-    <div class="shell footer-top">
-      <a class="brand brand--footer brand--endorsed" href="${c.path}"><span class="brand__wordmark"><span>eventpartner</span><b>.ge</b></span><small class="brand__endorsement">Powered by SWAGGY</small></a>
+    <div class="footer-primary">
+      <div class="footer-identity">
+        <a class="brand brand--footer" href="${c.path}"><span class="brand__wordmark"><span>eventpartner</span><b>.ge</b></span></a>
+        <a class="footer-project" href="https://swaggy.agency" target="_blank" rel="noopener">A PROJECT<br>BY<br>SWAGGY.AGENCY</a>
+      </div>
       <p>${esc(c.footer.line)}</p>
-      <a href="#contact">${esc(c.nav.cta)}</a>
     </div>
-    <div class="shell footer-bottom"><span>${esc(c.footer.location)}</span><span>© ${new Date().getFullYear()} eventpartner.ge · ${esc(c.footer.rights)}</span><a class="footer-swaggy" href="https://swaggy.agency" target="_blank" rel="noopener">Powered by SWAGGY</a>${languageLinks(c.lang, "language-switcher language-switcher--footer")}</div>
+    <div class="footer-links">
+      <a href="https://swaggy.agency" target="_blank" rel="noopener">SWAGGY.agency</a>
+      <a href="mailto:order@swaggy.agency">order@swaggy.agency</a>
+      <a href="https://t.me/swaggyagency" target="_blank" rel="noopener">Telegram</a>
+      <a href="https://swaggy.agency/en/privacy-policy" target="_blank" rel="noopener">Privacy</a>
+    </div>
+    <p class="footer-note">© ${new Date().getFullYear()} eventpartner.ge. ${esc(c.footer.rights)}</p>
   </footer>
   <script src="/assets/script.js?v=${version}" defer></script>
 </body>

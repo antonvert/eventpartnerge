@@ -14,7 +14,10 @@ for (const [lang, file] of pages) {
   const html = await readFile(file, "utf8");
   if (!html.includes(`<html lang="${lang}">`)) failures.push(`${lang}: incorrect html lang`);
   if ((html.match(/<h1\b/g) || []).length !== 1) failures.push(`${lang}: expected one H1`);
-  if ((html.match(/<h2\b/g) || []).length < 10) failures.push(`${lang}: core sections are missing`);
+  if ((html.match(/<h2\b/g) || []).length < 4) failures.push(`${lang}: core sections are missing`);
+  for (const sectionId of ["what-we-do", "georgia", "services", "process", "contact"]) {
+    if (!html.includes(`id="${sectionId}"`)) failures.push(`${lang}: missing #${sectionId} section`);
+  }
   if (!html.includes('rel="canonical"')) failures.push(`${lang}: canonical is missing`);
   if ((html.match(/hreflang=/g) || []).length < 7) failures.push(`${lang}: hreflang links are incomplete`);
   if (!html.includes('data-lead-form')) failures.push(`${lang}: lead form is missing`);

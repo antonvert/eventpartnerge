@@ -129,18 +129,9 @@ async function sendWithSender(binding, payload, request, sender) {
 }
 
 async function sendLeadEmail(binding, payload, request) {
-  const senders = ["leads@eventpartner.ge", "leads@corp-merch.eu"];
-  let lastError;
-  for (const sender of senders) {
-    try {
-      await sendWithSender(binding, payload, request, sender);
-      return sender;
-    } catch (error) {
-      lastError = error;
-      console.warn("Lead sender failed", sender, error?.code || "", error?.message || error);
-    }
-  }
-  throw lastError || new Error("email_delivery_failed");
+  const sender = "leads@eventpartner.ge";
+  await sendWithSender(binding, payload, request, sender);
+  return sender;
 }
 
 async function handleLead(request, env) {

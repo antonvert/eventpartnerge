@@ -1,0 +1,12 @@
+{
+  "name": "eventpartner-ge",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Multilingual static website for eventpartner.ge",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/check.mjs",
+    "dev": "npm run build && npx serve dist"
+  }
+}

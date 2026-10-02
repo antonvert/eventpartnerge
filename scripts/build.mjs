@@ -64,7 +64,7 @@ const render = (c) => {
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header" data-header>
-    <a class="brand brand--endorsed" href="${c.path}" aria-label="eventpartner.ge home"><span class="brand__wordmark"><span>eventpartner</span><b>.ge</b></span><small class="brand__endorsement">Powered by SWAGGY</small></a>
+    <div class="brand-badge"><a class="brand" href="${c.path}" aria-label="eventpartner.ge home"><span class="brand__wordmark"><span>eventpartner</span><b>.ge</b></span></a><a class="brand-badge__endorsement" href="https://swaggy.agency" target="_blank" rel="noopener" aria-label="Powered by SWAGGY"><span>Powered by</span><strong>SWAGGY</strong></a></div>
     <nav class="desktop-nav" aria-label="Primary">
       <a href="#what-we-do">${esc(c.nav.work)}</a>
       <a href="#georgia">${esc(c.nav.georgia)}</a>
@@ -232,7 +232,7 @@ const render = (c) => {
 
   <footer class="site-footer">
     <div class="shell footer-top">
-      <a class="brand brand--footer brand--endorsed" href="${c.path}"><span class="brand__wordmark"><span>eventpartner</span><b>.ge</b></span><small class="brand__endorsement">Powered by SWAGGY</small></a>
+      <a class="brand brand--footer" href="${c.path}"><span class="brand__wordmark"><span>eventpartner</span><b>.ge</b></span></a>
       <p>${esc(c.footer.line)}</p>
       <a href="#contact">${esc(c.nav.cta)}</a>
     </div>

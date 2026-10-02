@@ -4,7 +4,7 @@ export default {
   languageName: "English",
   meta: {
     title: "Event Partner Georgia | Events, Production & Local Experiences",
-    description: "A local event partner in Georgia for venues, production, suppliers, food, wine, experiences and branded merchandise — coordinated by one team in Tbilisi."
+    description: "Local event production in Georgia for event agencies, HR & People teams, and companies attending exhibitions and conferences — coordinated by one team in Tbilisi."
   },
   nav: {
     work: "What we do",
@@ -19,7 +19,7 @@ export default {
   hero: {
     eyebrow: "Based in Tbilisi · Working across Georgia",
     title: "Your local event partner in Georgia",
-    body: "Venues, production, local suppliers, food, wine, experiences and branded merchandise — coordinated by one team on the ground in Georgia.",
+    body: "Local event production in Georgia for event agencies, HR & People teams, and companies coming for exhibitions and conferences. Venues, suppliers, experiences, merchandise and on-site coordination through one local partner.",
     primary: "Request Event",
     secondary: "Tell us what you’re planning",
     proof: ["One local point of contact", "Events + experiences + merchandise", "On-site coordination"],
@@ -37,6 +37,16 @@ export default {
       venueCaption: "Venue branding · Tbilisi",
       productionCaption: "Technical event setup"
     }
+  },
+  audience: {
+    eyebrow: "Who we work with",
+    title: "Built for teams that need a trusted local partner in Georgia",
+    intro: "You keep the strategy, client relationship or internal goal. We handle the local execution.",
+    items: [
+      ["Event agencies", "You own the client and concept. We become your on-the-ground production partner in Georgia — venues, suppliers, logistics and event-day coordination."],
+      ["HR & People teams", "For offsites, team days, retreats and employee activities when you need the whole local setup handled without building a supplier network yourself."],
+      ["Exhibitors & conference teams", "For teams coming to exhibitions, conferences and side events — from local logistics and venue support to branded production and guest experiences."]
+    ]
   },
   formats: {
     eyebrow: "What we organise",

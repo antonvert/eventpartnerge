@@ -636,3 +636,73 @@ body { background: var(--paper); }
   .brand__endorsement { font-size: .49rem; letter-spacing: .1em; }
   .footer-swaggy { order: 3; }
 }
+
+
+/* Explicit audience positioning */
+.audience-block {
+  margin-top: 42px;
+  padding-top: 38px;
+  border-top: 1px solid var(--line);
+}
+.audience-block__head {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(280px, .75fr);
+  gap: clamp(34px, 6vw, 84px);
+  align-items: end;
+  margin-bottom: 26px;
+}
+.audience-block__head .eyebrow { margin-bottom: 12px; }
+.audience-block__head h2 {
+  margin: 0;
+  max-width: 820px;
+  font-size: clamp(2.15rem, 3.6vw, 3.7rem);
+  font-weight: 650;
+  line-height: 1;
+  letter-spacing: -.04em;
+}
+.audience-block__head > p {
+  margin: 0;
+  color: var(--muted);
+  font-size: .96rem;
+}
+.audience-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+.audience-card {
+  min-height: 210px;
+  padding: 24px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: #f5f8fd;
+  display: flex;
+  flex-direction: column;
+}
+.audience-card:nth-child(2) { background: #eef6f0; }
+.audience-card:nth-child(3) { background: #fff7ef; }
+.audience-card > span {
+  color: var(--wine);
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+}
+.audience-card h3 {
+  margin: auto 0 12px;
+  font-size: 1.35rem;
+  font-weight: 650;
+  line-height: 1.06;
+  letter-spacing: -.025em;
+}
+.audience-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: .86rem;
+}
+
+@media (max-width: 880px) {
+  .audience-block__head { grid-template-columns: 1fr; gap: 18px; }
+  .audience-grid { grid-template-columns: 1fr; }
+  .audience-card { min-height: 160px; }
+}

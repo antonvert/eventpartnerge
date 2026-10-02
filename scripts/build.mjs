@@ -125,8 +125,14 @@ const render = (c) => {
           </figure>
           <p class="proof-grid__note">Great experience<br><span>backed by</span><br>great organisation.</p>
         </div>
-        <div class="format-grid format-grid--compact">${c.formats.items.slice(0, 4).map(([title, body], index) => `
-          <article class="format-card"><span>${String(index + 1).padStart(2, "0")}</span><h3>${esc(title)}</h3><p>${esc(body)}</p></article>`).join("")}
+        <div class="audience-block">
+          <div class="audience-block__head">
+            <div>${eyebrow(c.audience.eyebrow)}<h2>${esc(c.audience.title)}</h2></div>
+            <p>${esc(c.audience.intro)}</p>
+          </div>
+          <div class="audience-grid">${c.audience.items.map(([title, body], index) => `
+            <article class="audience-card"><span>${String(index + 1).padStart(2, "0")}</span><h3>${esc(title)}</h3><p>${esc(body)}</p></article>`).join("")}
+          </div>
         </div>
       </div>
     </section>

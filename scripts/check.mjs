@@ -24,7 +24,11 @@ for (const [lang, file] of pages) {
   for (const match of html.matchAll(/(?:src|href)="(\/(?:assets\/[^"?#]+|favicon\.svg))/g)) {
     try { await access(path.join(dist, match[1])); } catch { failures.push(`${lang}: missing ${match[1]}`); }
   }
-  for (const forbidden of ["corp-merch.eu", "merch.mt", "google-analytics.com", "gtag("]) {
+  if (!html.includes("G-K9YVTX0VDH")) failures.push(`${lang}: GA4 measurement ID is missing`);
+  if (!html.includes("https://www.googletagmanager.com/gtag/js?id=G-K9YVTX0VDH")) failures.push(`${lang}: GA4 loader is missing`);
+  const gaIds = [...html.matchAll(/G-[A-Z0-9]{6,}/g)].map((match) => match[0]);
+  if (gaIds.some((id) => id !== "G-K9YVTX0VDH")) failures.push(`${lang}: unexpected GA4 measurement ID`);
+  for (const forbidden of ["corp-merch.eu", "merch.mt"]) {
     if (html.includes(forbidden)) failures.push(`${lang}: forbidden legacy value ${forbidden}`);
   }
 }

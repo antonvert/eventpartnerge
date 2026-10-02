@@ -59,6 +59,14 @@ const render = (c) => {
   <link rel="alternate" hreflang="x-default" href="${domain}/">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/assets/styles.css?v=${version}">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-K9YVTX0VDH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-K9YVTX0VDH');
+  </script>
   <script type="application/ld+json">${JSON.stringify(structuredData)}</script>
 </head>
 <body>

@@ -591,3 +591,48 @@ body { background: var(--paper); }
   .field-row--three { grid-template-columns: 1fr; }
   .scope-rail { padding: 22px; }
 }
+
+
+/* SWAGGY endorsement - consistent with merch.mt / corp-merch.eu */
+.brand--endorsed {
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 2px;
+  line-height: 1;
+}
+.brand__wordmark {
+  display: inline-flex;
+  align-items: baseline;
+}
+.brand__endorsement {
+  font-family: var(--sans);
+  font-size: .54rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.64);
+}
+.site-header--scrolled .brand__endorsement,
+.menu-open .brand__endorsement {
+  color: var(--muted);
+}
+.brand--footer .brand__endorsement {
+  color: rgba(255,255,255,.48);
+}
+.footer-swaggy {
+  color: rgba(255,255,255,.64);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,.28);
+  padding-bottom: 2px;
+}
+.footer-swaggy:hover,
+.footer-swaggy:focus-visible {
+  color: #fff;
+  border-color: rgba(255,255,255,.7);
+}
+
+@media (max-width: 620px) {
+  .brand__endorsement { font-size: .49rem; letter-spacing: .1em; }
+  .footer-swaggy { order: 3; }
+}

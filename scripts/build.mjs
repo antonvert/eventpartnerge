@@ -40,7 +40,7 @@ const render = (c) => {
   const structuredData = {
     "@context": "https://schema.org",
     "@graph": [
-      { "@type": "Organization", "@id": `${domain}/#organization`, name: "eventpartner.ge", url: domain, address: { "@type": "PostalAddress", addressLocality: "Tbilisi", addressCountry: "GE" } },
+      { "@type": "Organization", "@id": `${domain}/#organization`, name: "eventpartner.ge", url: domain, parentOrganization: { "@type": "Organization", name: "SWAGGY.agency", url: "https://swaggy.agency" }, address: { "@type": "PostalAddress", addressLocality: "Tbilisi", addressCountry: "GE" } },
       { "@type": "WebSite", "@id": `${domain}/#website`, url: domain, name: "eventpartner.ge", publisher: { "@id": `${domain}/#organization` }, inLanguage: ["en", "ru", "ka"] },
       { "@type": "Service", "@id": `${canonical}#service`, name: c.hero.title, description: c.meta.description, areaServed: { "@type": "Country", name: "Georgia" }, provider: { "@id": `${domain}/#organization` } }
     ]
@@ -64,7 +64,7 @@ const render = (c) => {
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header" data-header>
-    <a class="brand" href="${c.path}" aria-label="eventpartner.ge home"><span>eventpartner</span><b>.ge</b></a>
+    <a class="brand brand--endorsed" href="${c.path}" aria-label="eventpartner.ge home"><span class="brand__wordmark"><span>eventpartner</span><b>.ge</b></span><small class="brand__endorsement">Powered by SWAGGY</small></a>
     <nav class="desktop-nav" aria-label="Primary">
       <a href="#what-we-do">${esc(c.nav.work)}</a>
       <a href="#georgia">${esc(c.nav.georgia)}</a>
@@ -226,11 +226,11 @@ const render = (c) => {
 
   <footer class="site-footer">
     <div class="shell footer-top">
-      <a class="brand brand--footer" href="${c.path}"><span>eventpartner</span><b>.ge</b></a>
+      <a class="brand brand--footer brand--endorsed" href="${c.path}"><span class="brand__wordmark"><span>eventpartner</span><b>.ge</b></span><small class="brand__endorsement">Powered by SWAGGY</small></a>
       <p>${esc(c.footer.line)}</p>
       <a href="#contact">${esc(c.nav.cta)}</a>
     </div>
-    <div class="shell footer-bottom"><span>${esc(c.footer.location)}</span><span>© ${new Date().getFullYear()} eventpartner.ge · ${esc(c.footer.rights)}</span>${languageLinks(c.lang, "language-switcher language-switcher--footer")}</div>
+    <div class="shell footer-bottom"><span>${esc(c.footer.location)}</span><span>© ${new Date().getFullYear()} eventpartner.ge · ${esc(c.footer.rights)}</span><a class="footer-swaggy" href="https://swaggy.agency" target="_blank" rel="noopener">Powered by SWAGGY</a>${languageLinks(c.lang, "language-switcher language-switcher--footer")}</div>
   </footer>
   <script src="/assets/script.js?v=${version}" defer></script>
 </body>

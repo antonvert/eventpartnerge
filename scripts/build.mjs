@@ -54,6 +54,7 @@ const render = (c) => {
   <title>${esc(c.meta.title)}</title>
   <meta name="description" content="${esc(c.meta.description)}">
   <meta name="theme-color" content="#17243c">
+  <meta name="ga4-measurement-id" content="G-K9YVTX0VDH">
   <link rel="canonical" href="${canonical}">
   ${languages.map((item) => `<link rel="alternate" hreflang="${item.lang}" href="${domain}${item.path}">`).join("\n  ")}
   <link rel="alternate" hreflang="x-default" href="${domain}/">
@@ -63,25 +64,17 @@ const render = (c) => {
   <meta property="og:title" content="${esc(c.meta.title)}">
   <meta property="og:description" content="${esc(c.meta.description)}">
   <meta property="og:url" content="${canonical}">
-  <meta property="og:image" content="${domain}/assets/images/og-eventpartner-ge-wine-social-v1.jpg">
-  <meta property="og:image:secure_url" content="${domain}/assets/images/og-eventpartner-ge-wine-social-v1.jpg">
-  <meta property="og:image:type" content="image/jpeg">
-  <meta property="og:image:width" content="600">
-  <meta property="og:image:height" content="315">
-  <meta property="og:image:alt" content="Branded Georgian wine prepared for a corporate event in Tbilisi by SWAGGY">
+  <meta property="og:image" content="${domain}/assets/images/hero-event-space.webp">
+  <meta property="og:image:secure_url" content="${domain}/assets/images/hero-event-space.webp">
+  <meta property="og:image:type" content="image/webp">
+  <meta property="og:image:width" content="1280">
+  <meta property="og:image:height" content="960">
+  <meta property="og:image:alt" content="Corporate event space prepared in Tbilisi by SWAGGY">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${esc(c.meta.title)}">
   <meta name="twitter:description" content="${esc(c.meta.description)}">
-  <meta name="twitter:image" content="${domain}/assets/images/og-eventpartner-ge-wine-social-v1.jpg">
+  <meta name="twitter:image" content="${domain}/assets/images/hero-event-space.webp">
   <link rel="stylesheet" href="/assets/styles.css?v=${version}">
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-K9YVTX0VDH"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-K9YVTX0VDH');
-  </script>
   <script type="application/ld+json">${JSON.stringify(structuredData)}</script>
 </head>
 <body>

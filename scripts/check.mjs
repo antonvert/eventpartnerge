@@ -23,13 +23,13 @@ for (const [lang, file] of pages) {
   if (!html.includes('data-lead-form')) failures.push(`${lang}: lead form is missing`);
   if (!html.includes('property="og:type" content="website"')) failures.push(`${lang}: og:type is missing`);
   if (!html.includes('property="og:site_name" content="eventpartner.ge"')) failures.push(`${lang}: og:site_name is missing`);
-  if (!html.includes('og-eventpartner-ge-wine-social-v1.jpg')) failures.push(`${lang}: social preview image is missing`);
+  if (!html.includes('hero-event-space.webp')) failures.push(`${lang}: social preview image is missing`);
   if (!html.includes('name="twitter:card" content="summary_large_image"')) failures.push(`${lang}: Twitter card is missing`);
   for (const match of html.matchAll(/(?:src|href)="(\/(?:assets\/[^"?#]+|favicon\.svg))/g)) {
     try { await access(path.join(dist, match[1])); } catch { failures.push(`${lang}: missing ${match[1]}`); }
   }
   if (!html.includes("G-K9YVTX0VDH")) failures.push(`${lang}: GA4 measurement ID is missing`);
-  if (!html.includes("https://www.googletagmanager.com/gtag/js?id=G-K9YVTX0VDH")) failures.push(`${lang}: GA4 loader is missing`);
+  if (!html.includes('name="ga4-measurement-id" content="G-K9YVTX0VDH"')) failures.push(`${lang}: consent-gated GA4 metadata is missing`);
   const gaIds = [...html.matchAll(/G-[A-Z0-9]{6,}/g)].map((match) => match[0]);
   if (gaIds.some((id) => id !== "G-K9YVTX0VDH")) failures.push(`${lang}: unexpected GA4 measurement ID`);
   for (const forbidden of ["corp-merch.eu", "merch.mt"]) {
@@ -37,7 +37,13 @@ for (const [lang, file] of pages) {
   }
 }
 
-try { await access(path.join(dist, "assets/images/og-eventpartner-ge-wine-social-v1.jpg")); } catch { failures.push("Social preview JPEG is missing"); }
+const clientScript = await readFile(path.join(dist, "assets/script.js"), "utf8");
+for (const expected of ["analytics_storage", "form_submit", "generate_lead", "click_email", "click_phone", "click_messenger"]) {
+  if (!clientScript.includes(expected)) failures.push(`Analytics implementation is missing ${expected}`);
+}
+if (!clientScript.includes("googletagmanager.com/gtag/js")) failures.push("Consent-gated GA4 loader is missing");
+
+try { await access(path.join(dist, "assets/images/hero-event-space.webp")); } catch { failures.push("Social preview image is missing"); }
 
 const imageDir = path.join(dist, "assets/images");
 const images = (await readdir(imageDir)).filter((file) => file.endsWith(".webp"));
